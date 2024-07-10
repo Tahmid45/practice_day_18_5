@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block body %}
+<h1 class="text-center">Password Change Page</h1>
+
+<form method = "post" style = "margin:auto; width:40%" novalidate> 
+    {% csrf_token %}
+    
+    <!--{{form|crispy}}-->
+    {%for fm in form%}
+    {{fm.label_tag}}
+    {{fm}}
+    <p class="text-danger">{{fm.errors | striptags}}</p>
+    
+    {% endfor %}
+    {% comment %} {{form|crispy}} {% endcomment %}
+    <br>
+    <button class="btn btn-warning text-dark" type="submit" >Submit</button>
+</form>
+
+{% endblock %}
